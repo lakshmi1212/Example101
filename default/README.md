@@ -1,36 +1,27 @@
 # Example101: Math Operations
 
 ## Overview
-This project provides basic math operations (addition and subtraction) via Python functions and includes comprehensive pytest test suites.
+This repository implements basic math operations (addition, subtraction) and provides comprehensive pytest-based tests. CI integration is ready for GitHub Actions.
 
 ## Folder Structure
-- `src/`: Contains production code.
-    - `math_operations.py`: Implements `add` and `subtract` functions.
-- `tests/`: Contains test files.
-    - `test_add.py`: Tests for addition.
-    - `test_subtract.py`: Tests for subtraction.
-- `default/`: Project documentation and configuration.
-    - `README.md`: This file.
-    - `requirements.txt`: Python dependencies.
-    - `math.json`: CI metadata file.
+- `src/`: Production Python code
+- `tests/`: Pytest test files
+- `default/`: Documentation, requirements, and meta files
 
 ## Usage
-1. Clone the repository.
-2. Install dependencies:
-   ```bash
-   pip install -r default/requirements.txt
-   ```
-3. Run tests:
-   ```bash
-   pytest tests/
-   ```
+```
+from src.math_operations import add, subtract
+result = add(2, 3)
+result2 = subtract(5, 2)
+```
+
+## Running Tests
+```
+python -m pytest tests/ -v --tb=short --junitxml=reports/report.xml --html=reports/report.html --self-contained-html
+```
 
 ## CI Workflow
-- All tests are executed via GitHub Actions using `.github/workflows/ci.yml`.
-- Reports are generated in `reports/` (junit and html).
-
-## Python Version
-- 3.10
+See `.github/workflows/ci.yml` for pipeline details. All test results are saved in `reports/` and uploaded to S3.
 
 ## Requirements
 See `default/requirements.txt` for dependencies.
