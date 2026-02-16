@@ -11,7 +11,7 @@ on:
       - main
 
 jobs:
-  ci:
+  ci_python_tests:
     runs-on: ubuntu-latest
     name: Run Python Tests
     steps:
@@ -40,4 +40,4 @@ jobs:
       - name: Upload reports to S3
         if: always()
         run: |
-          aws s3 sync reports/ s3://ci-test-results-buckett/pytest-reports/${{ github.sha }}/
+          aws s3 sync reports/ s3://ci-test-results-bucket/pytest-reports/${{ github.sha }}/
