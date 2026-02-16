@@ -11,9 +11,9 @@ on:
       - main
 
 jobs:
-  ci_python_tests:
+  test:
     runs-on: ubuntu-latest
-    name: CI Pipeline
+    name: Run Python Tests and Upload Reports
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,6 +23,7 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r default/requirements.txt
       - name: Create reports directory
         run: |
